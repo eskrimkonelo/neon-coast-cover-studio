@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neon Coast Cover Studio — GTA-style cover maker</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">NC</span>
+    <div>
+      <h1>Neon Coast Cover Studio</h1>
+      <p>Turn any photo into a Vice-City-style poster cover. Photos never leave your machine.</p>
+    </div>
+  </div>
+  <div class="top-actions">
+    <button id="undoBtn" type="button" title="Undo">Undo</button>
+    <button id="redoBtn" type="button" title="Redo">Redo</button>
+    <button id="exportAll" type="button" class="primary">Export all 3 sizes</button>
+  </div>
+</header>
+
+<main class="app">
+  <section class="controls" aria-label="Cover controls">
+    <details open>
+      <summary>1 · Photos</summary>
+      <div class="photo-slots" id="photoSlots"></div>
+      <label class="check"><input id="fillAll" type="checkbox"> One photo fills every panel</label>
+      <p class="hint">Tip: click a panel in the preview, then drag it to move the photo and scroll to zoom.</p>
+      <div class="panel-tools" id="panelTools">
+        <div class="row"><label>Panel <span id="panelName">1</span> photo</label>
+          <select id="panelPhoto"></select></div>
+        <label>Zoom <input id="zoomRange" type="range" min="1" max="3" step="0.01" value="1"></label>
+        <label>Move left–right <input id="oxRange" type="range" min="-0.5" max="0.5" step="0.01" value="0"></label>
+        <label>Move up–down <input id="oyRange" type="range" min="-0.5" max="0.5" step="0.01" value="0"></label>
+      </div>
+    </details>
+
+    <details open>
+      <summary>2 · Layout</summary>
+      <div class="pick-grid" id="layoutGrid"></div>
+    </details>
+
+    <details open>
+      <summary>3 · Colour grade</summary>
+      <div class="pick-grid" id="gradeGrid"></div>
+    </details>
+
+    <details open>
+      <summary>4 · Caption &amp; badge</summary>
+      <label>Title <input id="titleInput" type="text" maxlength="24" value="VICE COAST"></label>
+      <label>Script line <input id="scriptInput" type="text" maxlength="32" value="welcome to the"></label>
+      <label>Subtitle <input id="subtitleInput" type="text" maxlength="48" value="Neon nights · palm dreams · one last heist"></label>
+      <label>Badge ribbon <input id="badgeInput" type="text" maxlength="20" value="VICE COAST"></label>
+      <label>Heat meter <span id="heatLabel">4 of 5 stars</span>
+        <input id="heatRange" type="range" min="0" max="5" step="1" value="4"></label>
+      <div class="checks">
+        <label class="check"><input id="grainToggle" type="checkbox" checked> Film grain</label>
+        <label class="check"><input id="vignetteToggle" type="checkbox" checked> Vignette</label>
+        <label class="check"><input id="halftoneToggle" type="checkbox" checked> Halftone title block</label>
+        <label class="check"><input id="palmsToggle" type="checkbox" checked> Palms &amp; sun art</label>
+      </div>
+    </details>
+
+    <details open>
+      <summary>5 · Size &amp; export</summary>
+      <div class="size-row" id="sizeRow">
+        <label class="check"><input type="radio" name="size" value="square" checked> Square 1080 × 1080</label>
+        <label class="check"><input type="radio" name="size" value="portrait"> Portrait 1080 × 1350</label>
+        <label class="check"><input type="radio" name="size" value="wide"> Wide 1920 × 1080</label>
+      </div>
+      <button id="exportOne" type="button">Export this size</button>
+      <button id="exportAll2" type="button" class="primary">Export all 3 sizes at once</button>
+      <p id="status" role="status">Load a photo to start — or try a sample below.</p>
+      <div class="samples" id="sampleRow"></div>
+    </details>
+  </section>
+
+  <section class="stage" aria-label="Live preview">
+    <div class="canvas-wrap">
+      <canvas id="cover" width="1080" height="1080" aria-label="Live cover preview"></canvas>
+      <div class="stage-caption" id="stageCaption">Live preview — click a panel to crop it</div>
+    </div>
+  </section>
+</main>
+
+<div class="shot-strip" id="shotStrip" hidden></div>
+
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
