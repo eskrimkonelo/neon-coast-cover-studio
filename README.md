@@ -31,3 +31,12 @@ This copies the app into `/output` (or `$MAKEFUN_OUTPUT_DIR`) and writes `dossie
 - `app/samples/` — starter photos (free to use) plus two originals.
 - `main.ts` — the entrypoint; copies the app and writes the dossier.
 - `screenshots/` — four real browser renders of the app.
+
+## Screenshots
+
+All four are real browser renders of the app, in `screenshots/`:
+
+- `1-cover.jpg` (1280×720) — the finished cover in the Hero + Three layout, Vice Sunset grade, titled "VICE COAST".
+- `2-editor.jpg` (1280×720) — the editor in the Nine Panel layout with the Neon Nights grade and a photo loaded.
+- `3-cover.jpg` (1024×1280) — the finished cover in the Tilted Snapshots layout, titled "NIGHT SHIFT".
+- `4-sizes.jpg` (1280×720) — all three export sizes side by side (square, portrait, wide) in the Palm Gold grade.
